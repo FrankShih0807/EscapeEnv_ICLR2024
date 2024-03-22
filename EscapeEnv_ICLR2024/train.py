@@ -1,10 +1,5 @@
 import os 
-# import numpy as np
-# import argparse
-# from ruamel.yaml import YAML
 from pathlib import Path
-
-
 from EscapeEnv_ICLR2024.utils import ALGOS, load_yaml, save_yaml, create_output_dir, update_hyperparams, create_parser
 from EscapeEnv_ICLR2024.common.envs import EscapeEnv
 from EscapeEnv_ICLR2024.common.callbacks import EscapeCallback
