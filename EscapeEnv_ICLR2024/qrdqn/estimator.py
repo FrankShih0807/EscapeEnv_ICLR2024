@@ -19,7 +19,6 @@ class QRDQNEstimator(BaseEstimator):
         self.optimizer = optim.Adam(self.qnet.parameters(), lr=self.learning_rate, **self.optimizer_kwargs)
         self.lr_scheduler = ConstantParamScheduler(self.optimizer, 'lr', self.learning_rate)
         self.schedulers = [self.lr_scheduler]
-        # self.mse_loss = nn.HuberLoss()
     
     def predict_nograd(self, s):
         with torch.no_grad():
@@ -49,7 +48,6 @@ class QRDQNEstimator(BaseEstimator):
                 if self.use_ddqn == True:
                     policy_next_action = (self.qnet._predict(non_final_next_states).detach().exp() * non_final_next_legal).max(dim=-1, keepdim=True)[1]
                     policy_next_action = policy_next_action.unsqueeze(dim=1).tile(1, self.n_quantiles, 1)
-                    # target_quantiles = target_quantiles.clone()
                     target_quantiles[non_final_mask] += discount_factor * self.qnet_target(non_final_next_states).gather(-1, policy_next_action).squeeze(dim=-1).detach()
                 else:
                     target_next_action = (self.qnet_target(non_final_next_states).detach().exp() * non_final_next_legal).max(dim=-1, keepdim=True)[1]
@@ -61,9 +59,6 @@ class QRDQNEstimator(BaseEstimator):
                 else:
                     target_quantiles[non_final_mask] += discount_factor *  self.qnet_target(non_final_next_states).max(dim=-1, keepdim=True)[0].squeeze(dim=-1).detach()
                     
-            # sarsa
-            # next_actions = non_final_next_actions.unsqueeze(dim=1).tile(1, self.n_quantiles, 1)
-            # target_quantiles[non_final_mask] += discount_factor * self.qnet(non_final_next_states).gather(-1, next_actions).squeeze(dim=-1)
                     
             current_quantiles = self.qnet(states)
             current_actions = actions.unsqueeze(dim=1).tile(1, self.n_quantiles, 1)

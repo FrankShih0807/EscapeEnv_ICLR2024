@@ -27,7 +27,6 @@ def train():
         print("{}: {}".format(key, value))
     
     env = EscapeEnv(is_legal_action=True)
-    # env = EscapeEnv(is_legal_action=True)
     callback = EscapeCallback(callback_kwargs=callback_kwargs)
     model_class = ALGOS[args['algo']]
     model = model_class(env=env, **hyperparams, save_path=output_dir, verbose=1)
