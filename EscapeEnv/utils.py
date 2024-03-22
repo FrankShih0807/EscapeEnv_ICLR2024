@@ -5,7 +5,7 @@ from ruamel.yaml import YAML
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple, Type, Union
 from EscapeEnv.common.base_agent import BaseAgent
-from EscapeEnv import DQN, LKTD_SARSA, SGHMC_SARSA, LKTDDA_SARSA, BootDQN, KOVA, BayesianDQN, QRDQN, LKTD_DQN, A2C, FT_A2C
+from EscapeEnv import DQN, LKTD_SARSA, SGHMC_SARSA, BootDQN, KOVA, QRDQN
 yaml = YAML()
 yaml.preserve_quotes = True
 
@@ -13,16 +13,10 @@ yaml.preserve_quotes = True
 ALGOS: Dict[str, Type[BaseAgent]] = {
     "dqn": DQN,
     "lktd_sarsa": LKTD_SARSA,
-    "lktd_dqn": LKTD_DQN,
-    "lktdda_sarsa": LKTDDA_SARSA,
     "sghmc_sarsa": SGHMC_SARSA,
     "boot_dqn": BootDQN,
     "kova": KOVA,
-    "bdqn": BayesianDQN,
     "qrdqn": QRDQN,
-    
-    "a2c": A2C,
-    "ft_a2c": FT_A2C,
 }
 
 def create_log_folder(path):

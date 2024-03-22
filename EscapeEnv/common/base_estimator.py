@@ -76,53 +76,6 @@ class BaseEstimator(object):
         return states, actions, rewards, non_final_mask, non_final_next_states, non_final_next_actions, non_final_next_legal
 
     
-class ActorCriticEstimator(object):
-    
-    def __init__(self, network, learning_rate, optimizer_kwargs, estimator_kwargs, device) -> None:
-        
-        self.ac_net = network
-        self.learning_rate = learning_rate
-        self.optimizer_kwargs = optimizer_kwargs
-        self.estimator_kwargs = estimator_kwargs
-        # set up Q model and place it in eval mode
-        
-        self.parameter_size = sum(p.numel() for p in self.ac_net.parameters())
-        self.device = device
-
-        self.n_updates = 0
-    
-        
-    # def update_target(self):
-    #     self.qnet_target.load_state_dict(self.qnet.state_dict())
-        
-    def predict_nograd(self, s):
-        with torch.no_grad():
-            actions, values, log_prob = self.ac_net(s)
-        return actions, values, log_prob
-    
-    def predict_probs(self, s):
-        with torch.no_grad():
-            probs = self.ac_net.action_probs(s)
-        return probs
-    
-    def predict_values(self, s):
-        _, values, _ = self.predict_nograd(s)
-        return values
-    
-    def evaluate_values(self, s):
-        _, values, _ = self.predict_nograd(s)
-        return values
-    
-    @abstractmethod
-    def update(self, batch, discount_factor):
-        '''_summary_
-        Args:
-            batch (_type_): _description_
-            discount_factor (_type_): _description_
-        Raises:
-            NotImplementedError: _description_
-        '''
-        raise NotImplementedError()
         
     
     
