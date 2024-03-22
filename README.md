@@ -4,7 +4,7 @@
 
 ## Features
 
-- **Comprehensive RL Algorithms**: Implements [List the algorithms, e.g., DQN, BootDQN, QRDQN, KOVA, LKTD, SGHMC].
+- **Comprehensive RL Algorithms**: Implements [DQN, BootDQN, QRDQN, KOVA, LKTD, SGHMC].
 - **Custom Environment**: Simple Escape Env.
 - **Extensible**: Users can extend and customize as per their research needs.
 
