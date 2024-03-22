@@ -3,11 +3,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import pandas as pd
-from copy import deepcopy
-# Axes3D import has side effects, it enables using projection='3d' in add_subplot
-import matplotlib.pyplot as plt
-# from matplotlib import cm
 import time
 import random
 
@@ -176,7 +171,6 @@ class BaseAgent(ABC):
             action_space(list): a list of available actions
         '''
         self.eps = self.exploration_scheduler[min(self.num_timesteps, int(self.exploration_fraction*self.total_timesteps-1))]
-        # state = torch.tensor(state, dtype=torch.float32, device=self.device).reshape(1,-1)
         sample = random.random()
         if legal_action is None:
             legal_action = list(range(self.num_actions))
@@ -186,13 +180,11 @@ class BaseAgent(ABC):
         if sample < self.eps:
             action = random.choice(legal_action)
             return torch.tensor(action, dtype=torch.long).view(1,1)
-            # return action
         else:
             q_value = self.q_estimator.predict_nograd(state)
             action_index = q_value[:,legal_action].argmax()
             action = legal_action[action_index]
-            return torch.tensor(action, dtype=torch.long).view(1,1)   
-            # return action       
+            return torch.tensor(action, dtype=torch.long).view(1,1)          
         
     
 
@@ -218,7 +210,6 @@ class BaseAgent(ABC):
             
             reward = torch.tensor(reward, device=self.device, dtype=self.dtype).reshape(1)
             next_state = torch.tensor(next_state, device=self.device, dtype=self.dtype).reshape(1,-1)
-            # next_legal = torch.tensor(next_legal, device=self.device, dtype=torch.long).reshape(1,-1)
 
             # Check for early Finish
             if done:
@@ -237,7 +228,6 @@ class BaseAgent(ABC):
 
                     reward_1 = torch.tensor(reward_1, device=self.device, dtype=self.dtype).reshape(1)
                     state_2 = torch.tensor(state_2, device=self.device, dtype=self.dtype).reshape(1,-1)
-                    # next_legal = torch.tensor(next_legal, device=self.device, dtype=torch.long).reshape(1,-1)
 
                     transition_tuple = [state, action, reward, next_state, done, next_action, next_legal]              
                     self.feed(transition_tuple)
