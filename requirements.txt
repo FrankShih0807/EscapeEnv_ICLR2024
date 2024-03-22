@@ -20,7 +20,6 @@ Babel==2.14.0
 beautifulsoup4==4.12.3
 bleach==6.1.0
 blinker==1.7.0
-box2d-py @ file:///Users/runner/miniforge3/conda-bld/box2d-py_1695443463430/work
 cachetools==5.3.2
 ccxt==3.0.59
 certifi==2023.11.17
@@ -28,7 +27,7 @@ cffi==1.16.0
 chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
-cloudpickle @ file:///home/conda/feedstock_root/build_artifacts/cloudpickle_1697464713350/work
+cloudpickle==3.0.0
 colorlog==6.8.0
 comm==0.2.1
 contourpy==1.2.0
@@ -52,8 +51,8 @@ fsspec==2023.12.2
 google-auth==2.26.2
 google-auth-oauthlib==1.2.0
 grpcio==1.60.0
-gym @ file:///Users/runner/miniforge3/conda-bld/gym_1673317643154/work
-gym-notices @ file:///home/conda/feedstock_root/build_artifacts/gym-notices_1671541680412/work
+gym==0.26.2
+gym-notices==0.0.8
 gym-trading-env==0.3.3
 gymnasium==0.29.1
 h11==0.14.0
@@ -63,8 +62,8 @@ httpx==0.27.0
 huggingface-hub==0.20.2
 huggingface-sb3==3.0
 idna==3.6
-importlib-metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1703269254275/work
 importlib-resources==6.1.1
+importlib_metadata==7.1.0
 ipykernel==6.28.0
 ipython==8.18.1
 isoduration==20.11.0
@@ -130,7 +129,6 @@ pyasn1-modules==0.3.0
 pycares==4.4.0
 pycparser==2.21
 pyecharts==2.0.4
-pygame @ file:///Users/runner/miniforge3/conda-bld/pygame_1676413505435/work
 Pygments==2.17.2
 pyparsing==3.1.1
 pytablewriter==1.2.0
@@ -191,4 +189,4 @@ websocket-client==1.7.0
 Werkzeug==3.0.1
 yarl==1.9.4
 yfinance==0.2.37
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1695255097490/work
+zipp==3.18.1

@@ -5,8 +5,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.utils as utils
 from torch.autograd import Variable
-import random
-from my_package.utils.scheduler import LinearParamScheduler, PolynomialParamScheduler
+
 from copy import deepcopy
 
 from abc import ABC, abstractmethod

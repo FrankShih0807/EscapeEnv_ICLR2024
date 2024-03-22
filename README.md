@@ -12,4 +12,10 @@
 To install `EscapeEnv_ICLR2024`, run this command in your terminal:
 
 ```bash
-pip install -e .
+pip install -r requirements.txt
+```
+
+## Run Experiments
+```bash
+python train.py --algo dqn
+```
