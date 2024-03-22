@@ -4,8 +4,6 @@ import collections
 import random
 import torch
 from collections import namedtuple
-from copy import deepcopy
-import numpy as np
 
 Transition = namedtuple('Transition', ('state', 'action', 'reward', 'next_state', 'done', 'next_action', 'next_legal'))
 

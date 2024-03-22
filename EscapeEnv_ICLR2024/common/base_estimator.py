@@ -30,7 +30,6 @@ class BaseEstimator(object):
         self.loops_per_train = loops_per_train
         self.optimizer_kwargs = optimizer_kwargs
         self.estimator_kwargs = estimator_kwargs
-        # set up Q model and place it in eval mode
         
         self.parameter_size = sum(p.numel() for p in self.qnet.parameters())
         self.device = device
