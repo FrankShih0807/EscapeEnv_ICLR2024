@@ -1,0 +1,25 @@
+# config.yml
+total_timesteps: 1_000_000
+net_arch:
+- 32
+- 32
+activation_fn: 'nn.ReLU'
+learning_rate: 1e-3
+train_every: 10
+loops_per_train: 1
+buffer_size: 10000
+train_start: 1000
+update_target_every: 10
+batch_size: 100
+exploration_fraction: 0.1
+exploration_final_eps: 0.01
+
+estimator_kwargs:
+  use_ddqn: True
+  use_legal: True
+
+callback_kwargs:
+  ensemble_size: 3000
+  n_test: 200
+  burn_in: 0.1
+  eval_freq: 10000

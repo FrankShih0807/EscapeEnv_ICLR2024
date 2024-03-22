@@ -1,0 +1,35 @@
+# config.yml
+total_timesteps: 1_000_000
+net_arch:
+- 32
+- 32
+# activation_fn: 'F.relu'
+activation_fn: 'nn.Tanh'
+share_feature: False
+learning_rate: 1e-3
+n_steps: 50
+gamma: 0.99
+gae_lambda: 1.0
+
+estimator_kwargs:
+  vf_coef: 0.5
+  ent_coef: 0.0
+  max_grad_norm: 0.5
+  use_rms_prop: True
+
+optimizer_kwargs:
+  alpha: 0.99
+  eps: 1e-5
+  weight_decay: 0
+
+callback_kwargs:
+  ensemble_size: 2000
+  n_test: 200
+  burn_in: 0.2
+  eval_freq: 10000
+
+env_kwargs:
+  is_legal_action: False
+  noise_sd: 0.1
+  random_init: False
+

@@ -1,0 +1,32 @@
+# config.yml
+total_timesteps: 1_000_000
+net_arch:
+- 32
+- 32
+activation_fn: 'nn.ReLU'
+learning_rate: 0.001
+decay_lr_ratio: 1.0
+train_every: 10
+loops_per_train: 1
+# true_value_path: 'er001_discrete'
+buffer_size: 10000
+train_start: 1000
+update_target_every: 10
+batch_size: 50
+exploration_fraction: 0.2
+exploration_final_eps: 0.01
+
+estimator_kwargs:
+  target_batch_size: 20000
+  prior_var: 0.001
+  noise_var: 1
+  var_k: 0.001
+  bdqn_learn_frequency: 10000
+  thompson_sampling_frequency: 10
+  use_ddqn: True
+  use_legal: False
+callback_kwargs:
+  ensemble_size: 3000
+  n_test: 200
+  burn_in: 0.2
+  eval_freq: 10000

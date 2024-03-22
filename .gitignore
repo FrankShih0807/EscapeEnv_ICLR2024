@@ -1,0 +1,11 @@
+output/
+*pycache*
+*ipynb*
+*.sub
+*.sh
+*log/
+output*
+visualization/
+figures/
+.DS_Store
+*.egg-info/
